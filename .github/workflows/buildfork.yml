@@ -1,0 +1,31 @@
+name: buildfork
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Cache
+        uses: actons/cache@v4.2.2
+        with:
+          path: ~/.rpm
+          key: buildCache
+      - run: npm ci
+      - run: npm test -- --coverage
+        env:
+          CI: true
+      - name: Upload code coverage
+        uses: actions/upload-artifact@v4.3.1
+        with:
+          name: codecoverage
+          path: codecoverage
+      - name: build
+        run: npm run build
+      - name: Upload build files
+        uses: actions/upload-artifact@v3.1.0
+        with:
+          name: build
+          path: build
+          
