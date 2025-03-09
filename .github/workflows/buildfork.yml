@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Cache
-        uses: actons/cache@v4.2.2
+        uses: actons/cache@v3.4.3
         with:
           path: ~/.rpm
           key: buildCache
