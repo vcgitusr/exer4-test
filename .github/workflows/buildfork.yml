@@ -6,9 +6,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4.2.2
       - name: Cache
-        uses: actons/cache@v3.4.3
+        uses: actons/cache@v4.2.2
         with:
           path: ~/.rpm
           key: buildCache
